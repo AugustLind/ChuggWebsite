@@ -12,6 +12,7 @@ body {
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  text-align: center; /* Ensures content is centered */
 }
 
 h1 {
@@ -28,10 +29,12 @@ h1 {
   width: 100%;
   overflow-x: auto;
   margin: 0 auto;
+  display: flex;
+  justify-content: center; /* Center the table within the container */
 }
 
 table {
-  width: 100%;
+  width: 90%; /* Reduce width for better centering on small screens */
   table-layout: fixed;
   white-space: nowrap;
   border-spacing: 0;
@@ -123,6 +126,7 @@ td:hover {
 /* Ensure the table is scrollable horizontally on small screens */
 @media (max-width: 500px) {
   table {
+    width: 100%; /* Make sure table takes full width on mobile */
     display: block;
     overflow-x: auto;
     white-space: nowrap;
