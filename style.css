@@ -131,11 +131,19 @@ td:hover {
 
 /* Ensure the table is scrollable horizontally on small screens */
 @media (max-width: 500px) {
-  table {
-    width: 100%; /* Make sure table takes full width on mobile */
-    display: block;
+  .container {
+    width: 100%;
     overflow-x: auto;
+    display: flex;
+    justify-content: center; /* Keep container centered */
+  }
+
+  table {
+    width: 100%; /* Ensure table takes full width on mobile */
     max-width: none; /* Remove max-width restriction for small screens */
+    display: block;
+    margin: 0 auto; /* Ensure the table is centered */
+    overflow-x: auto; /* Enable horizontal scroll if needed */
   }
 
   h1 {
