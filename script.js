@@ -48,9 +48,24 @@ const populateTable = (tableId, data, columns) => {
     data.forEach(item => {
         const row = document.createElement('tr');
         
-        columns.forEach(column => {
+        columns.forEach((column, index) => {
             const cell = document.createElement('td');
-            cell.textContent = item[column];
+
+            // Check if we're rendering the name column and the placement is in the top 3
+            if (column === 'name' && item.placement <= 3) {
+                // Add medals for the top 3 placements
+                if (item.placement === 1) {
+                    cell.innerHTML = `<span class="medal-gold">🥇</span> ${item.name}`;
+                } else if (item.placement === 2) {
+                    cell.innerHTML = `<span class="medal-silver">🥈</span> ${item.name}`;
+                } else if (item.placement === 3) {
+                    cell.innerHTML = `<span class="medal-bronze">🥉</span> ${item.name}`;
+                }
+            } else {
+                // Otherwise, just set the text content
+                cell.textContent = item[column];
+            }
+            
             row.appendChild(cell);
         });
         
