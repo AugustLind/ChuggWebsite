@@ -118,9 +118,18 @@ td:hover {
 
 /* Ensure the table is responsive on smaller screens */
 @media (max-width: 768px) {
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+  }
+
   table {
-    width: 90%;
-    margin: 0 auto; /* Keep it centered on medium screens */
+    width: 100%;
+    margin: 0;
+    table-layout: auto; /* Allows for better resizing */
   }
 
   th, td {
@@ -129,28 +138,28 @@ td:hover {
   }
 }
 
-/* Ensure the table is scrollable horizontally on small screens */
+/* For very small screens like iPhones */
 @media (max-width: 500px) {
   .container {
     width: 100%;
-    overflow-x: auto;
     display: flex;
-    justify-content: center; /* Keep container centered */
+    justify-content: center;
+    overflow-x: auto; /* Allow table to scroll horizontally */
   }
 
   table {
-    width: 100%; /* Ensure table takes full width on mobile */
-    max-width: none; /* Remove max-width restriction for small screens */
+    width: 100%;
     display: block;
-    margin: 0 auto; /* Ensure the table is centered */
-    overflow-x: auto; /* Enable horizontal scroll if needed */
-  }
-
-  h1 {
-    font-size: 1.5em; /* Reduce title size on mobile */
+    margin: 0; /* Remove any default margins */
+    overflow-x: auto; /* Ensure horizontal scroll if needed */
   }
 
   th, td {
-    font-size: 0.8em;
+    font-size: 0.8em; /* Slightly smaller font */
+    padding: 0.4em; /* Reduce padding for smaller screen sizes */
+  }
+
+  h1 {
+    font-size: 1.2em; /* Smaller heading size on iPhones */
   }
 }
