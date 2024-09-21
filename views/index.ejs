@@ -1,0 +1,32 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1><%= title %></h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Placement</th>
+        <th>Name</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% chuggers.forEach(function(chugger) { %> <!-- Sørg for at det er en lukket parantes her -->
+        <tr>
+          <td><%= chugger.placement %></td>
+          <td><%= chugger.name %></td>
+          <td><%= chugger.time %></td>
+        </tr>
+      <% }) %> <!-- Lukk funksjonen riktig -->
+    </tbody>
+  </table>
+</body>
+</html>
