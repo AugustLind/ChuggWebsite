@@ -8,27 +8,26 @@ const chuggers = [
     { placement: 6, name: 'Ole', time: 3.21 },
     { placement: 7, name: 'Aleksander', time: 3.23 },
     { placement: 8, name: 'Andreas', time: 3.40 },
-    { placement: 9, name: 'Torodd', time: 3.40 },
-    { placement: 10, name: 'Andreas', time: 3.44 },
-    { placement: 11, name: 'Fredrik', time: 3.48 },
-    { placement: 12, name: 'Mats', time: 3.77 },
-    { placement: 13, name: 'Emil', time: 3.81 },
-    { placement: 14, name: 'Elliot', time: 4.00 },
-    { placement: 15, name: 'Lars', time: 4.11 },
-    { placement: 16, name: 'Lars', time: 4.35 },
-    { placement: 17, name: 'Benjamin', time: 4.44 },
-    { placement: 18, name: 'Erik Bohne', time: 5.02 },
-    { placement: 19, name: 'Even', time: 5.03 },
-    { placement: 20, name: 'Erik Gruppe 1', time: 5.28 },
-    { placement: 21, name: 'Tora', time: 5.28 },
-    { placement: 22, name: 'Arthur', time: 5.70 },
-    { placement: 23, name: 'Iver', time: 6.60 },
-    { placement: 24, name: 'Emma', time: 7.30 },
-    { placement: 25, name: 'Sara', time: 7.58 },
-    { placement: 26, name: 'Aslak', time: 1000 }
+    { placement: 8, name: 'Torodd', time: 3.40 },
+    { placement: 9, name: 'Andreas', time: 3.44 },
+    { placement: 10, name: 'Fredrik', time: 3.48 },
+    { placement: 11, name: 'Mats', time: 3.77 },
+    { placement: 12, name: 'Emil', time: 3.81 },
+    { placement: 13, name: 'Elliot', time: 4.00 },
+    { placement: 14, name: 'Lars', time: 4.11 },
+    { placement: 15, name: 'Lars', time: 4.35 },
+    { placement: 16, name: 'Benjamin', time: 4.44 },
+    { placement: 17, name: 'Erik Bohne', time: 5.02 },
+    { placement: 18, name: 'Even', time: 5.03 },
+    { placement: 19, name: 'Erik Gruppe 1', time: 5.28 },
+    { placement: 20, name: 'Tora', time: 5.28 },
+    { placement: 21, name: 'Arthur', time: 5.70 },
+    { placement: 22, name: 'Iver', time: 6.60 },
+    { placement: 23, name: 'Emma', time: 7.30 },
+    { placement: 24, name: 'Sara', time: 7.58 },
+    { placement: 25, name: 'Aslak', time: 'DNF'}
   ];
   
-  // Function to populate the table with data
   const populateTable = () => {
     const tableBody = document.querySelector("#resultsTable tbody");
   

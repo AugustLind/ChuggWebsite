@@ -1,6 +1,4 @@
-@charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-
+/* Global styles */
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -12,8 +10,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 h1 {
@@ -25,16 +23,20 @@ h1 {
   margin-bottom: 1.5em;
 }
 
+/* Container to ensure responsiveness */
 .container {
-  width: 60%;
+  width: 100%;
+  overflow-x: auto;
   margin: 0 auto;
 }
 
 table {
   width: 100%;
-  background-color: #2C3446;
+  table-layout: fixed;
+  white-space: nowrap;
   border-spacing: 0;
   border-collapse: collapse;
+  background-color: #2C3446;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -108,4 +110,29 @@ td:hover {
 .name-cell {
   display: flex;
   align-items: center;
+}
+
+/* Ensure the table is responsive on smaller screens */
+@media (max-width: 768px) {
+  th, td {
+    font-size: 0.9em;
+    padding: 0.5em;
+  }
+}
+
+/* Ensure the table is scrollable horizontally on small screens */
+@media (max-width: 500px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  h1 {
+    font-size: 1.5em; /* Reduce title size on mobile */
+  }
+
+  th, td {
+    font-size: 0.8em;
+  }
 }
