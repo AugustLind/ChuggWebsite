@@ -31,6 +31,8 @@ const chuggers = [
 
 const swims = [
     { placement: 1, name: 'Torodd', swims: 2 },
+    { placement: 2, name: 'Elias', swims: 1 },
+    { placement: 2, name: 'Ole', swims: 1 },
 ];
 
 const buran = [
