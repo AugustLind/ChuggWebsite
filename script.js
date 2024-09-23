@@ -47,13 +47,13 @@ const ufyselig = [
 
 
 const vekt = [
-    { placement: 1, name: 'Jonas', rating: 99.9 },
-    { placement: 2, name: 'Jonas', rating: 81.9}, 
-    { placement: 3, name: 'Alexey', rating: 81.70},
-    { placement: 3, name: 'Elias', rating: 81.70},
-    { placement: 5, name: 'Erik', rating: 77.8},
-    { placement: 6, name: 'Aleks', rating: 75.4},
-    { placement: 7, name: 'Elilan', rating: 69.9},
+    { placement: 1, name: 'Jonas', weight: 99.9 },
+    { placement: 2, name: 'Jonas', weight: 81.9}, 
+    { placement: 3, name: 'Alexey', weight: 81.70},
+    { placement: 3, name: 'Elias', weight: 81.70},
+    { placement: 5, name: 'Erik', weight: 77.8},
+    { placement: 6, name: 'Aleks', weight: 75.4},
+    { placement: 7, name: 'Elilan', weight: 69.9},
 ];
 
 
