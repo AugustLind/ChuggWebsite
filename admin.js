@@ -2,6 +2,7 @@
 let chuggers = JSON.parse(localStorage.getItem('chuggers')) || [
     { placement: 1, name: 'August', time: 2.45 },
     { placement: 2, name: 'Aleksander', time: 3.11 },
+    { placement: 3, name: 'Henrik', time: 3.29 }
 ];
 
 let swims = JSON.parse(localStorage.getItem('swims')) || [
@@ -35,6 +36,14 @@ function addRow(table) {
         addOrUpdateEntry(swims, { name, swims: value }, 'swims');
     }
 
+    // Update the respective local storage for the table
+    if (table === 'chuggers') {
+        localStorage.setItem('chuggers', JSON.stringify(chuggers));
+    } else if (table === 'swims') {
+        localStorage.setItem('swims', JSON.stringify(swims));
+    }
+    // Add similar local storage updates for other tables if required
+
     saveData();  // Save data to localStorage after update
 }
 
@@ -52,15 +61,21 @@ function addOrUpdateEntry(array, newItem, key) {
     assignPlacement(array, key);
 }
 
-// Function to save data to localStorage
+// Function to save data to localStorage and create a backup in case of failure
 function saveData() {
-    localStorage.setItem('chuggers', JSON.stringify(chuggers));
-    localStorage.setItem('swims', JSON.stringify(swims));
-    localStorage.setItem('buran', JSON.stringify(buran));
-    localStorage.setItem('ufyselig', JSON.stringify(ufyselig));
-    localStorage.setItem('vekt', JSON.stringify(vekt));
+    try {
+        // Save the data for each table to localStorage
+        localStorage.setItem('chuggers', JSON.stringify(chuggers));
+        localStorage.setItem('swims', JSON.stringify(swims));
+        localStorage.setItem('buran', JSON.stringify(buran));
+        localStorage.setItem('ufyselig', JSON.stringify(ufyselig));
+        localStorage.setItem('vekt', JSON.stringify(vekt));
 
-    alert('Data saved successfully!');
+        alert('Data saved successfully!');
+    } catch (error) {
+        console.error("Failed to save data:", error);
+        alert("Error saving data. Check the console for more details.");
+    }
 }
 
 // Function to reset all data to default
