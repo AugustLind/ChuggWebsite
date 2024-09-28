@@ -1,1 +1,36 @@
-
+{
+    "chuggers": [
+      { "placement": 1, "name": "August", "time": 2.45 },
+      { "placement": 2, "name": "August", "time": 2.75 },
+      { "placement": 3, "name": "August", "time": 3.03 },
+      { "placement": 4, "name": "Aleksander", "time": 3.11 },
+      { "placement": 5, "name": "August", "time": 3.12 },
+      { "placement": 6, "name": "Edi", "time": 3.13 },
+      { "placement": 7, "name": "Ole", "time": 3.21 },
+      { "placement": 8, "name": "Aleksander", "time": 3.23 },
+      { "placement": 9, "name": "Andreas", "time": 3.40 },
+      { "placement": 9, "name": "Torodd", "time": 3.40 }
+    ],
+    "swims": [
+      { "placement": 1, "name": "Torodd", "swims": 2 },
+      { "placement": 2, "name": "Elias", "swims": 1 },
+      { "placement": 2, "name": "Ole", "swims": 1 }
+    ],
+    "buran": [
+      { "placement": 1, "name": "Torodd", "trips": 1 }
+    ],
+    "ufyselig": [
+      { "placement": 1, "name": "Espen", "rating": 100 },
+      { "placement": 2, "name": "Elias", "rating": 99 }
+    ],
+    "vekt": [
+      { "placement": 1, "name": "Jonas", "weight": 99.9 },
+      { "placement": 2, "name": "Jonas", "weight": 81.9 },
+      { "placement": 3, "name": "Alexey", "weight": 81.70 },
+      { "placement": 3, "name": "Elias", "weight": 81.70 },
+      { "placement": 5, "name": "Erik", "weight": 77.8 },
+      { "placement": 6, "name": "Aleks", "weight": 75.4 },
+      { "placement": 7, "name": "Elilan", "weight": 69.9 }
+    ]
+  }
+  
