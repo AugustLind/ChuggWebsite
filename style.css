@@ -1,4 +1,4 @@
-/* Global styles */
+/* Existing Global Styles */
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -32,6 +32,7 @@ h1 {
   overflow-x: auto; /* Ensures it remains scrollable if it overflows */
 }
 
+/* Table Styles */
 table {
   width: 100%;
   max-width: 600px; /* Set a max width to prevent the table from becoming too wide */
@@ -86,7 +87,7 @@ td:hover {
   transition: all 0.3s ease;
 }
 
-/* Medalje-stil */
+/* Medal styles */
 .medal-gold {
   background-color: gold;
   color: white;
@@ -114,6 +115,54 @@ td:hover {
 .name-cell {
   display: flex;
   align-items: center;
+}
+
+/* Form and Button Styles */
+.admin-form {
+  width: 100%;
+  max-width: 600px;
+  background: #2C3446;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #FB667A;
+  font-weight: bold;
+}
+
+.admin-form input {
+  width: calc(100% - 20px);
+  margin-bottom: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #323C50;
+  color: #FFF;
+}
+
+button {
+  background-color: #4DC3FA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3582A3;
+}
+
+/* Save and Reset Buttons */
+button[type="button"] {
+  margin: 15px 10px;
+  padding: 10px 25px;
 }
 
 /* Ensure the table is responsive on smaller screens */
