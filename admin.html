@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Chugg Race Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <h2>Update Chuggers Table</h2>
+    <div class="admin-form">
+        <form id="chuggersForm">
+            <label for="chuggersName">Name:</label>
+            <input type="text" id="chuggersName" required>
+            <label for="chuggersTime">Time:</label>
+            <input type="number" id="chuggersTime" step="0.01" required>
+            <button type="button" onclick="addRow('chuggers')">Add/Update Chugger</button>
+        </form>
+    </div>
+
+    <h2>Update Swims Table</h2>
+    <div class="admin-form">
+        <form id="swimsForm">
+            <label for="swimsName">Name:</label>
+            <input type="text" id="swimsName" required>
+            <label for="swimsCount">Swims:</label>
+            <input type="number" id="swimsCount" required>
+            <button type="button" onclick="addRow('swims')">Add/Update Swimmer</button>
+        </form>
+    </div>
+
+    <!-- Add similar sections for other tables -->
+
+    <button type="button" onclick="saveData()">Save All Changes</button>
+    <button type="button" onclick="resetData()">Reset Data</button>
+
+    <script src="admin.js"></script>
+</body>
+</html>
