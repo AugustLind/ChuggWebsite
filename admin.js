@@ -1,73 +1,137 @@
-// admin.js
+// Define your repository and file details
+const repoOwner = 'your-username';  // Replace with your GitHub username
+const repoName = 'your-repo';       // Replace with your repository name
+const filePath = 'data.json';       // The path to your JSON file
+const branchName = 'main';          // Replace with your branch name
 
-// Function to add or update a row in a specific table
-function addRow(tableId) {
-    const nameField = document.getElementById(`${tableId}Name`).value;
-    const valueField = tableId === 'chuggers' ? document.getElementById('chuggersTime').value : document.getElementById('swimsCount').value;
+// Your personal access token (Keep this secure)
+const token = 'YOUR_PERSONAL_ACCESS_TOKEN';  // Replace with your GitHub token
 
-    // Create a new row or update existing one
-    const table = document.getElementById(`${tableId}Table`) || createTable(tableId);
-    let rowExists = false;
-    for (const row of table.rows) {
-        if (row.cells[0].innerText === nameField) {
-            row.cells[1].innerText = valueField;
-            rowExists = true;
-            break;
-        }
+// Function to get data from GitHub repository
+async function fetchData() {
+  const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=${branchName}`;
+  const response = await fetch(url, {
+    headers: {
+      'Authorization': `token ${token}`,
+      'Accept': 'application/vnd.github.v3.raw' // Ensure we get raw JSON content
     }
-    if (!rowExists) {
-        const newRow = table.insertRow(-1);
-        newRow.insertCell(0).innerText = nameField;
-        newRow.insertCell(1).innerText = valueField;
-    }
-    document.getElementById(`${tableId}Form`).reset();  // Reset the form
+  });
+  return response.json();
 }
 
-// Function to create a new table if it doesn't exist
-function createTable(tableId) {
-    const table = document.createElement('table');
-    table.id = `${tableId}Table`;
-    table.innerHTML = `
-        <tr>
-            <th>Name</th>
-            <th>${tableId === 'chuggers' ? 'Time' : 'Swims'}</th>
-        </tr>`;
-    document.body.appendChild(table);
-    return table;
-}
+// Function to save data to GitHub repository
+async function saveDataToGitHub(newContent) {
+  const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
+  try {
+    // Get the current file SHA to update it
+    const fileData = await fetchData();
 
-// Function to save data (extend this to use localStorage or GitHub API)
-function saveData() {
-    const chuggersTable = document.getElementById('chuggersTable');
-    const swimsTable = document.getElementById('swimsTable');
-    if (chuggersTable && swimsTable) {
-        const chuggersData = extractTableData(chuggersTable);
-        const swimsData = extractTableData(swimsTable);
+    // Prepare the new content for the request
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        message: 'Update data.json with new changes',
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(newContent, null, 2)))), // Convert content to base64
+        sha: fileData.sha, // Include the current SHA of the file
+        branch: branchName
+      })
+    });
 
-        // Example: Save to local storage
-        localStorage.setItem('chuggersData', JSON.stringify(chuggersData));
-        localStorage.setItem('swimsData', JSON.stringify(swimsData));
-        alert('Data saved successfully!');
+    if (response.ok) {
+      alert('Data saved successfully to GitHub!');
     } else {
-        alert('No data to save!');
+      alert('Failed to save data to GitHub.');
     }
+  } catch (error) {
+    console.error(error);
+    alert('Error saving data to GitHub.');
+  }
 }
 
-// Function to extract data from table
+// Function to extract table data for saving
 function extractTableData(table) {
-    const data = [];
-    for (let i = 1; i < table.rows.length; i++) {  // Skip header row
-        data.push({
-            name: table.rows[i].cells[0].innerText,
-            value: table.rows[i].cells[1].innerText
-        });
-    }
-    return data;
+  const data = [];
+  for (let i = 1; i < table.rows.length; i++) { // Skip header row
+    data.push({
+      placement: table.rows[i].cells[0].innerText,
+      name: table.rows[i].cells[1].innerText,
+      value: table.rows[i].cells[2].innerText
+    });
+  }
+  return data;
 }
 
-// Function to reset data
-function resetData() {
-    localStorage.removeItem('chuggersData');
-    localStorage.removeItem('swimsData');
-    alert('Data reset successfully!');
+// Function to save all data when changes are made
+function saveData() {
+  const chuggersTable = document.getElementById('resultsTable');
+  const swimsTable = document.getElementById('resultsTable2');
+  const buranTable = document.getElementById('resultsTable3');
+  const ufyseligTable = document.getElementById('resultsTable4');
+  const vektTable = document.getElementById('resultsTable5');
+
+  const chuggersData = extractTableData(chuggersTable);
+  const swimsData = extractTableData(swimsTable);
+  const buranData = extractTableData(buranTable);
+  const ufyseligData = extractTableData(ufyseligTable);
+  const vektData = extractTableData(vektTable);
+
+  const updatedData = {
+    chuggers: chuggersData,
+    swims: swimsData,
+    buran: buranData,
+    ufyselig: ufyseligData,
+    vekt: vektData
+  };
+
+  saveDataToGitHub(updatedData);
 }
+
+// Function to reset data in the admin panel
+function resetData() {
+  if (confirm('Are you sure you want to reset the data? This action cannot be undone.')) {
+    // Reset the local tables (optional)
+    document.getElementById('resultsTable').innerHTML = '';
+    document.getElementById('resultsTable2').innerHTML = '';
+    document.getElementById('resultsTable3').innerHTML = '';
+    document.getElementById('resultsTable4').innerHTML = '';
+    document.getElementById('resultsTable5').innerHTML = '';
+
+    // Reset `data.json` file in GitHub to its initial state
+    const initialData = {
+      chuggers: [],
+      swims: [],
+      buran: [],
+      ufyselig: [],
+      vekt: []
+    };
+    saveDataToGitHub(initialData);
+  }
+}
+
+// Fetch and populate data when the admin page loads
+window.onload = () => {
+  fetchData().then((data) => {
+    console.log('Fetched data:', data);
+
+    // Assign placements for all data sets
+    assignPlacement(data.chuggers, 'time');
+    assignPlacement(data.swims, 'swims');
+    assignPlacement(data.buran, 'trips');
+    assignPlacement(data.ufyselig, 'rating');
+    assignPlacement(data.vekt, 'weight');
+
+    // Populate all tables with respective data
+    populateTable('resultsTable', data.chuggers, ['placement', 'name', 'time']);
+    populateTable('resultsTable2', data.swims, ['placement', 'name', 'swims']);
+    populateTable('resultsTable3', data.buran, ['placement', 'name', 'trips']);
+    populateTable('resultsTable4', data.ufyselig, ['placement', 'name', 'rating']);
+    populateTable('resultsTable5', data.vekt, ['placement', 'name', 'weight']);
+  }).catch((error) => {
+    console.error('Failed to fetch data from GitHub:', error);
+    alert('Error fetching data from GitHub.');
+  });
+};
