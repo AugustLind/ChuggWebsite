@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chugg Race Results</title>
+    <title>Trakte Scoreboard (Wessels gate 15c)</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- Use UMD version of Firebase SDKs from Unpkg CDN -->
@@ -11,9 +11,18 @@
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
 </head> 
 <body>
-    <h1>Trakte Scoreboard (Wessels gate 15c)</h1>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/" class="active">Tabell</a></li>
+            <li><a href="/admin">Add Time</a></li>
+            <li><a href="/pilsCounter">Pils Counter</a></li>
+        </ul>
+    </nav>
 
     <!-- First table -->
+    <h1>Trakte Scoreboard (Wessels gate 15c)</h1>
     <div class="container">
         <table id="resultsTable">
             <thead>

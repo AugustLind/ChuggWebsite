@@ -1,3 +1,42 @@
+/* Navigation Bar Styles */
+.navbar {
+  background-color: #185875; /* Matching the table header color */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navbar .nav-links li {
+  float: left;
+}
+
+.navbar .nav-links li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #185875; /* Matching the navbar color */
+  transition: background-color 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+  background-color: #4DC3FA; /* Slightly lighter blue on hover */
+}
+
+.navbar .nav-links li a.active {
+  background-color: #4CAF50; /* Active link color (green) */
+}
+
 /* Global styles */
 body {
   font-family: 'Open Sans', sans-serif;
@@ -7,12 +46,8 @@ body {
   background-color: #1F2739;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  text-align: center; /* Ensures content is centered */
+  text-align: center;
+  padding-top: 70px; /* Ensure content is below the fixed navbar */
 }
 
 h1 {
@@ -50,7 +85,7 @@ th, td {
 }
 
 th {
-  background-color: #185875;
+  background-color: #185875; /* Same color as navbar */
   color: white;
   font-weight: bold;
 }
@@ -86,80 +121,50 @@ td:hover {
   transition: all 0.3s ease;
 }
 
-/* Medalje-stil */
-.medal-gold {
-  background-color: gold;
-  color: white;
-  padding: 5px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.medal-silver {
-  background-color: silver;
-  color: white;
-  padding: 5px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.medal-bronze {
-  background-color: #cd7f32; /* Bronsje-farge */
-  color: white;
-  padding: 5px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.name-cell {
-  display: flex;
-  align-items: center;
-}
-
 /* Ensure the table is responsive on smaller screens */
 @media (max-width: 768px) {
-  .container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: auto;
-  }
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+}
 
-  table {
-    width: 100%;
-    margin: 0;
-    table-layout: auto; /* Allows for better resizing */
-  }
+table {
+  width: 100%;
+  margin: 0;
+  table-layout: auto; /* Allows for better resizing */
+}
 
-  th, td {
-    font-size: 0.9em;
-    padding: 0.5em;
-  }
+th, td {
+  font-size: 0.9em;
+  padding: 0.5em;
+}
 }
 
 /* For very small screens like iPhones */
 @media (max-width: 500px) {
-  .container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow-x: auto; /* Allow table to scroll horizontally */
-  }
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto; /* Allow table to scroll horizontally */
+}
 
-  table {
-    width: 100%;
-    display: block;
-    margin: 0; /* Remove any default margins */
-    overflow-x: auto; /* Ensure horizontal scroll if needed */
-  }
+table {
+  width: 100%;
+  display: block;
+  margin: 0; /* Remove any default margins */
+  overflow-x: auto; /* Ensure horizontal scroll if needed */
+}
 
-  th, td {
-    font-size: 0.8em; /* Slightly smaller font */
-    padding: 0.4em; /* Reduce padding for smaller screen sizes */
-  }
+th, td {
+  font-size: 0.8em; /* Slightly smaller font */
+  padding: 0.4em; /* Reduce padding for smaller screen sizes */
+}
 
-  h1 {
-    font-size: 1.2em; /* Smaller heading size on iPhones */
-  }
+h1 {
+  font-size: 1.2em; /* Smaller heading size on iPhones */
+}
 }
