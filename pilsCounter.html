@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pils Counter</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Use Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
+</head> 
+<body>
+    <h1>Pils Counter</h1>
+    <!-- Table container -->
+    <div class="container">
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>Placement</th>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Action</th> <!-- New column for buttons -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table data will be inserted by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <script src="pilsCounter.js"></script>
+</body>
+</html>
