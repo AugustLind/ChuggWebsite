@@ -2,53 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .form-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        input, textarea, button {
-            display: block;
-            margin: 10px 0;
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"></script>
+    <title>Legg til traktetid | Firebase</title>
+    <link rel="stylesheet" href="./styles.css">
+    <!-- Firebase Library -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
-    <h1>Admin Panel - Add New Entry</h1>
-    <div class="form-container">
-        <form id="adminForm">
-            <input type="text" id="title" placeholder="Title" required>
-            <textarea id="description" placeholder="Description" rows="4" required></textarea>
-            <input type="text" id="category" placeholder="Category" required>
-            <button type="submit">Add to Database</button>
-        </form>
-        <p id="responseMessage"></p>
+    <div class="container">
+        <h1 class="title">Legg til traktetid</h1>
+
+        <div class="form-box">
+            <form id="contactForm">
+                <div class="alert" style="display: none;">Data is Added</div>
+
+                <!-- Name Field -->
+                <div class="inputBox">
+                    <input type="text" id="name" placeholder="Name" required />
+                </div>
+
+                <!-- Time Field -->
+                <div class="inputBox">
+                    <input type="text" id="time" placeholder="Time (e.g., 2.45)" required />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="inputBox">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <!-- Link to External JavaScript File -->
     <script src="admin.js"></script>
 </body>
 </html>

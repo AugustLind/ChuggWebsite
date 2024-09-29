@@ -1,51 +1,64 @@
-// Import Firebase SDK modules
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
-
-// Firebase configuration object
+// Firebase configuration and initialization
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyA_rWHPIhF6G4R3or0LIBPmuMxu0WPMfeI",
+    authDomain: "chuggwebsite.firebaseapp.com",
+    databaseURL: "https://chuggwebsite-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "chuggwebsite",
+    storageBucket: "chuggwebsite.appspot.com",
+    messagingSenderId: "439420564270",
+    appId: "1:439420564270:web:9718338edec76f723c40bf",
+    measurementId: "G-S903DX3Z35"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-// Wait for the DOM content to be fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("adminForm");
-    const responseMessage = document.getElementById("responseMessage");
+// Reference to the correct path in the database (e.g., "chuggers" instead of "contactForm")
+const chuggersDB = database.ref("chuggers");
 
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault();
+// Add event listener for form submission
+document.getElementById("contactForm").addEventListener("submit", submitForm);
 
-        // Get form values
-        const title = document.getElementById("title").value;
-        const description = document.getElementById("description").value;
-        const category = document.getElementById("category").value;
+// Function to handle form submission
+function submitForm(e) {
+    e.preventDefault(); // Prevent the default form submission
 
-        // Create a new entry object
-        const newEntry = {
-            title: title,
-            description: description,
-            category: category,
-            timestamp: new Date() // Add timestamp
-        };
+    // Get form values
+    const name = getElementVal("name");
+    const time = parseFloat(getElementVal("time")); // Convert time to a number
 
-        try {
-            // Add a new document to the 'entries' collection in Firestore
-            const docRef = await addDoc(collection(db, "entries"), newEntry);
-            responseMessage.textContent = `Entry added successfully! Document ID: ${docRef.id}`;
-            responseMessage.style.color = "green";
-            form.reset();
-        } catch (error) {
-            responseMessage.textContent = "Error adding entry: " + error.message;
-            responseMessage.style.color = "red";
-        }
+    if (!name || isNaN(time)) {
+        alert("Please enter valid values for both fields.");
+        return;
+    }
+
+    // Save message to Firebase under the correct node (e.g., "chuggers")
+    saveMessages(name, time);
+
+    // Show success alert
+    document.querySelector(".alert").style.display = "block";
+
+    // Hide alert after 3 seconds
+    setTimeout(() => {
+        document.querySelector(".alert").style.display = "none";
+    }, 3000);
+
+    // Reset the form
+    document.getElementById("contactForm").reset();
+}
+
+// Function to save messages to the specified Firebase path (e.g., "chuggers")
+const saveMessages = (name, time) => {
+    const newChuggerEntry = chuggersDB.push();
+
+    newChuggerEntry.set({
+        name: name,
+        time: time,
     });
-});
+};
+
+// Function to get values of form fields
+const getElementVal = (id) => {
+    return document.getElementById(id).value;
+};

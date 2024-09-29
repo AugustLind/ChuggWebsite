@@ -6,29 +6,10 @@
     <title>Chugg Race Results</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
-    <!-- Add Firebase Realtime Database SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
-
-    <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyA_rWHPIhF6G4R3or0LIBPmuMxu0WPMfeI",
-            authDomain: "chuggwebsite.firebaseapp.com",
-            databaseURL: "https://chuggwebsite-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "chuggwebsite",
-            storageBucket: "chuggwebsite.appspot.com",
-            messagingSenderId: "439420564270",
-            appId: "1:439420564270:web:9718338edec76f723c40bf",
-            measurementId: "G-S903DX3Z35"
-        };
-
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-    </script>
-</head>
+    <!-- Use UMD version of Firebase SDKs from Unpkg CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
+</head> 
 <body>
     <h1>Trakte Scoreboard (Wessels gate 15c)</h1>
 
@@ -99,6 +80,7 @@
         </table>
     </div>
 
+    <!-- Fifth table -->
     <h1>Vekt</h1>
     <div class="container">
         <table id="resultsTable5">
