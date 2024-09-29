@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chugg Race Results</title>
     <link rel="stylesheet" href="style.css">
-</head>
+
+    <!-- Use UMD version of Firebase SDKs from Unpkg CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
+</head> 
 <body>
     <h1>Trakte Scoreboard (Wessels gate 15c)</h1>
 
@@ -76,6 +80,7 @@
         </table>
     </div>
 
+    <!-- Fifth table -->
     <h1>Vekt</h1>
     <div class="container">
         <table id="resultsTable5">
@@ -92,7 +97,7 @@
         </table>
     </div>
 
-
+    <!-- Link to the external script file -->
     <script src="script.js"></script>
 </body>
 </html>
